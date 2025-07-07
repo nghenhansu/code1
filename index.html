@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Tiềm Năng Đầu Tư Tên Miền Việt Nam 2025-2030</title>
+    <!-- Tải Tailwind CSS để tạo kiểu nhanh chóng và responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tải Chart.js để tạo biểu đồ dữ liệu -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Tải font "Be Vietnam Pro" từ Google Fonts để đảm bảo hiển thị đẹp và đồng bộ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Áp dụng font "Be Vietnam Pro" cho toàn bộ body */
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        /* Định nghĩa container cho biểu đồ để đảm bảo responsive và căn giữa */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px; /* Giới hạn chiều rộng tối đa cho biểu đồ */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Chiều cao cố định cho biểu đồ trên mobile */
+            max-height: 350px;
+        }
+        /* Điều chỉnh chiều cao biểu đồ cho màn hình lớn hơn (tablet và desktop) */
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        /* Tạo hiệu ứng gradient cho văn bản */
+        .gradient-text {
+            background: linear-gradient(90deg, #665191, #f95d6a, #ffa600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Kiểu dáng chung cho các thẻ KPI và thông tin nổi bật */
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.1); /* Nền trong suốt nhẹ */
+            backdrop-filter: blur(10px); /* Hiệu ứng làm mờ nền */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Viền mỏng */
+        }
+    </style>
+</head>
+<body class="bg-[#003f5c] text-white">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <!-- Phần Header của Infographic -->
+        <header class="text-center py-12">
+            <h1 class="text-4xl md:text-6xl font-black uppercase"><span class="gradient-text">Đón Sóng Vàng</span></h1>
+            <h2 class="text-2xl md:text-4xl font-bold mt-2">Tiềm Năng Đầu Tư Tên Miền Việt Nam 2025-2030</h2>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-300">Phân tích dựa trên xung lực từ Nghị quyết 68-NQ/TW và sự chuyển dịch của nền kinh tế số.</p>
+        </header>
+
+        <main>
+            <!-- Phần Thị Trường Tiềm Năng Bùng Nổ -->
+            <section id="market-explosion" class="py-12">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold">Thị Trường Tiềm Năng Bùng Nổ</h3>
+                    <p class="mt-2 text-gray-400 max-w-2xl mx-auto">Chính sách thúc đẩy kinh tế tư nhân đang mở ra một thị trường danh tính số khổng lồ chưa từng có.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Thẻ KPI: Mục tiêu Doanh nghiệp -->
+                    <div class="kpi-card rounded-2xl p-8 text-center">
+                        <p class="text-2xl font-bold text-gray-300">Mục tiêu Doanh nghiệp</p>
+                        <p class="text-7xl font-black my-4 gradient-text">2 TRIỆU</p>
+                        <p class="text-lg">Vào năm 2030, tăng hơn gấp đôi từ ~940.000 hiện tại. Hơn <strong class="text-[#ffa600]">1 triệu</strong> khách hàng tiềm năng mới cho tên miền.</p>
+                    </div>
+                    <!-- Thẻ KPI: Chuyển đổi Hộ Kinh Doanh -->
+                    <div class="kpi-card rounded-2xl p-8 text-center">
+                        <p class="text-2xl font-bold text-gray-300">Chuyển đổi Hộ Kinh Doanh</p>
+                        <p class="text-7xl font-black my-4 gradient-text">5 TRIỆU</p>
+                        <p class="text-lg">Hộ kinh doanh sẽ chuyển đổi sang mô hình doanh nghiệp trước 2026, tạo ra một làn sóng nhu cầu khổng lồ về thương hiệu và tên miền.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phần "Khoảng Trống" Thị Trường .vn -->
+            <section id="penetration-gap" class="py-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <!-- Container cho biểu đồ tỷ lệ thâm nhập -->
+                    <div class="chart-container">
+                        <canvas id="penetrationChart"></canvas>
+                    </div>
+                    <div class="text-center lg:text-left">
+                        <h3 class="text-3xl font-bold">"Khoảng Trống" Thị Trường `.vn`</h3>
+                        <p class="mt-4 text-lg text-gray-300">
+                            Dù tên miền `.vn` đang tăng trưởng nóng, một nghịch lý lớn đang tồn tại: tỷ lệ doanh nghiệp sở hữu tên miền quốc gia vẫn còn rất thấp so với thế giới. Đây chính là dư địa phát triển cốt lõi cho các nhà đầu tư.
+                        </p>
+                        <!-- Thẻ KPI: Tỷ lệ doanh nghiệp Việt Nam sở hữu tên miền .vn -->
+                        <div class="mt-6 p-6 kpi-card rounded-xl">
+                            <p class="text-5xl font-bold text-[#ffa600]">Chỉ 25%</p>
+                            <p class="text-xl mt-2">doanh nghiệp Việt Nam sở hữu tên miền `.vn`, trong khi con số này ở các nước phát triển là trên 70%.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Phần Giá Trị Vượt Trội Của Tên Miền .vn -->
+            <section id="why-vn" class="py-12">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold">Giá Trị Vượt Trội Của Tên Miền `.vn`</h3>
+                    <p class="mt-2 text-gray-400 max-w-2xl mx-auto">Tên miền quốc gia không chỉ là địa chỉ, mà còn là tài sản số mang lại lợi thế cạnh tranh rõ rệt.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Thẻ lợi ích: Tin Cậy Tuyệt Đối -->
+                    <div class="kpi-card rounded-xl p-6 text-center hover:bg-[#2f4b7c] transition-all duration-300">
+                        <div class="text-6xl mb-4">🛡️</div>
+                        <h4 class="text-2xl font-bold mb-2 text-[#ffa600]">Tin Cậy Tuyệt Đối</h4>
+                        <p>Hơn <strong class="text-2xl">85%</strong> người dùng trong nước tin tưởng website có đuôi `.vn`, tạo lợi thế xây dựng thương hiệu bền vững.</p>
+                    </div>
+                    <!-- Thẻ lợi ích: Ưu Thế SEO -->
+                    <div class="kpi-card rounded-xl p-6 text-center hover:bg-[#2f4b7c] transition-all duration-300">
+                        <div class="text-6xl mb-4">📈</div>
+                        <h4 class="text-2xl font-bold mb-2 text-[#ffa600]">Ưu Thế SEO</h4>
+                        <p>Các công cụ tìm kiếm ưu tiên hiển thị kết quả có tên miền quốc gia cho người dùng tại Việt Nam, giúp tiếp cận khách hàng hiệu quả.</p>
+                    </div>
+                    <!-- Thẻ lợi ích: Tốc Độ & An Toàn -->
+                    <div class="kpi-card rounded-xl p-6 text-center hover:bg-[#2f4b7c] transition-all duration-300">
+                        <div class="text-6xl mb-4">⚡</div>
+                        <h4 class="text-2xl font-bold mb-2 text-[#ffa600]">Tốc Độ & An Toàn</h4>
+                        <p>Hạ tầng DNS quốc gia mạnh mẽ, tăng tốc độ truy cập và đảm bảo hoạt động ổn định ngay cả khi có sự cố cáp quang quốc tế.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Phần 3 Hướng Đầu Tư Chiến Lược Tối Đa Lợi Nhuận -->
+            <section id="strategy" class="py-12">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold">3 Hướng Đầu Tư Chiến Lược Tối Đa Lợi Nhuận</h3>
+                    <p class="mt-2 text-gray-400 max-w-2xl mx-auto">Tập trung vào các phân khúc có tiềm năng tăng trưởng đột phá và nhu cầu rõ ràng để tối ưu hóa hiệu quả đầu tư.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Hướng đầu tư 1: Từ Khóa Vàng Ngành Mũi Nhọn -->
+                    <div class="bg-[#2f4b7c] p-6 rounded-2xl">
+                        <h4 class="text-2xl font-bold mb-4 text-[#ffa600]">1. Từ Khóa Vàng Ngành Mũi Nhọn</h4>
+                        <p class="mb-4 text-gray-300">Đón đầu các lĩnh vực được Chính phủ ưu tiên phát triển. Các tên miền chứa từ khóa chung trong các ngành này có giá trị nội tại rất cao.</p>
+                        <div class="h-64">
+                            <!-- Biểu đồ tiềm năng các ngành -->
+                            <canvas id="sectorsChart"></canvas>
+                        </div>
+                        <p class="mt-4 text-sm text-gray-400">Ví dụ: `trituenhantao.vn`, `logisticsxanh.com`, `thuongmaixuyenbiengioi.vn`</p>
+                    </div>
+                    <!-- Hướng đầu tư 2: Thương Hiệu Tiềm Năng (SMEs) -->
+                    <div class="bg-[#2f4b7c] p-6 rounded-2xl">
+                        <h4 class="text-2xl font-bold mb-4 text-[#f95d6a]">2. Thương Hiệu Tiềm Năng (SMEs)</h4>
+                        <p class="mb-4 text-gray-300">Chủ động khai thác thị trường hơn 75% doanh nghiệp vừa và nhỏ chưa có tên miền `.vn` bằng cách đăng ký trước và chào bán lại.</p>
+                        <div class="space-y-4 mt-8">
+                            <!-- Bước 1 -->
+                            <div class="flex items-center">
+                                <span class="flex-shrink-0 bg-[#d45087] h-10 w-10 rounded-full flex items-center justify-center font-bold">1</span>
+                                <p class="ml-4">Tìm kiếm SME/Startup mới thành lập</p>
+                            </div>
+                            <div class="pl-5 text-3xl text-[#d45087]">↓</div>
+                            <!-- Bước 2 -->
+                            <div class="flex items-center">
+                                <span class="flex-shrink-0 bg-[#d45087] h-10 w-10 rounded-full flex items-center justify-center font-bold">2</span>
+                                <p class="ml-4">Kiểm tra & Đăng ký tên miền thương hiệu</p>
+                            </div>
+                            <div class="pl-5 text-3xl text-[#d45087]">↓</div>
+                            <!-- Bước 3 -->
+                            <div class="flex items-center">
+                                <span class="flex-shrink-0 bg-[#d45087] h-10 w-10 rounded-full flex items-center justify-center font-bold">3</span>
+                                <p class="ml-4">Chào bán lại cho chính doanh nghiệp</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hướng đầu tư 3: Thị Trường Ngách -->
+                    <div class="bg-[#2f4b7c] p-6 rounded-2xl">
+                        <h4 class="text-2xl font-bold mb-4 text-[#665191]">3. Thị Trường Ngách</h4>
+                        <p class="mb-4 text-gray-300">Khai thác các tài sản có giá trị sẵn có hoặc tiềm năng tăng trưởng theo sự phát triển của từng địa phương, với mức độ cạnh tranh thấp hơn.</p>
+                        <div class="mt-8 space-y-6">
+                            <!-- Thẻ con: Tên miền hết hạn -->
+                            <div class="kpi-card rounded-lg p-4">
+                                <h5 class="font-bold text-lg">Tên miền hết hạn (Expired)</h5>
+                                <p class="text-sm text-gray-300">Mua lại các tên miền có sẵn lịch sử, tuổi đời và các chỉ số SEO tốt để phát triển dự án mới.</p>
+                            </div>
+                            <!-- Thẻ con: Tên miền địa danh -->
+                            <div class="kpi-card rounded-lg p-4">
+                                <h5 class="font-bold text-lg">Tên miền địa danh (Geo-domains)</h5>
+                                <p class="text-sm text-gray-300">Đầu tư vào tên miền `[ngành nghề] + [tên tỉnh]` tại các địa phương có tốc độ tăng trưởng kinh tế cao.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phần Sân Chơi Mới: Các Đuôi Tên Miền Đột Phá -->
+            <section id="new-tlds" class="py-12">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold">Sân Chơi Mới: Các Đuôi Tên Miền Đột Phá</h3>
+                    <p class="mt-2 text-gray-400 max-w-2xl mx-auto">VNNIC đang mở ra các không gian tên miền mới, tạo ra những thị trường ngách chuyên biệt và đầy tiềm năng.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div class="space-y-6">
+                        <!-- Thẻ đuôi tên miền: .ai.vn -->
+                        <div class="kpi-card rounded-xl p-6 border-l-4 border-[#ffa600]">
+                            <h4 class="text-2xl font-bold">.ai.vn</h4>
+                            <p>"Mỏ vàng" cho ngành công nghệ AI. Kết hợp từ khóa xu hướng toàn cầu và uy tín quốc gia. Trở thành tiêu chuẩn cho các công ty AI tại Việt Nam.</p>
+                        </div>
+                        <!-- Thẻ đuôi tên miền: .io.vn -->
+                        <div class="kpi-card rounded-xl p-6 border-l-4 border-[#f95d6a]">
+                            <h4 class="text-2xl font-bold">.io.vn</h4>
+                            <p>Lựa chọn lý tưởng cho các startup công nghệ, lập trình viên. Thể hiện sự hiện đại, "tech-savvy" với chi phí hợp lý.</p>
+                        </div>
+                        <!-- Thẻ đuôi tên miền: .id.vn -->
+                        <div class="kpi-card rounded-xl p-6 border-l-4 border-[#d45087]">
+                            <h4 class="text-2xl font-bold">.id.vn</h4>
+                            <p>Dành riêng cho xây dựng thương hiệu cá nhân, chuyên gia, KOLs. Chi phí thấp, dễ tiếp cận, tiềm năng lớn với sự phát triển của kinh tế cá nhân.</p>
+                        </div>
+                    </div>
+                    <!-- Biểu đồ so sánh chi phí các đuôi tên miền mới -->
+                    <div class="chart-container">
+                        <canvas id="tldCostChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Phần Quản Trị Rủi Ro -->
+            <section id="risks" class="py-12">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold">Quản Trị Rủi Ro: Lằn Ranh Đầu Tư & Chiếm Dụng</h3>
+                    <p class="mt-2 text-gray-400 max-w-2xl mx-auto">Nhà đầu tư chuyên nghiệp cần nhận diện và có biện pháp phòng ngừa các rủi ro cốt lõi, đặc biệt là rủi ro pháp lý.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Thẻ rủi ro: Pháp lý -->
+                    <div class="bg-[#2f4b7c] p-6 rounded-xl text-center">
+                        <div class="text-5xl mb-3">⚖️</div>
+                        <h4 class="text-xl font-bold mb-2">Pháp lý</h4>
+                        <p class="text-sm text-gray-300">Rủi ro lớn nhất là bị kiện vì chiếm dụng tên miền (cybersquatting). Luôn tra cứu nhãn hiệu đã được bảo hộ trước khi mua.</p>
+                    </div>
+                    <!-- Thẻ rủi ro: Thị trường -->
+                    <div class="bg-[#2f4b7c] p-6 rounded-xl text-center">
+                        <div class="text-5xl mb-3">📉</div>
+                        <h4 class="text-xl font-bold mb-2">Thị trường</h4>
+                        <p class="text-sm text-gray-300">Tên miền có thể khó bán (thanh khoản thấp). Tập trung vào tên miền có giá trị nội tại (ngắn, dễ nhớ, từ khóa tốt).</p>
+                    </div>
+                    <!-- Thẻ rủi ro: Tài chính -->
+                    <div class="bg-[#2f4b7c] p-6 rounded-xl text-center">
+                        <div class="text-5xl mb-3">💰</div>
+                        <h4 class="text-xl font-bold mb-2">Tài chính</h4>
+                        <p class="text-sm text-gray-300">Chi phí duy trì danh mục có thể trở thành gánh nặng. Xây dựng danh mục chất lượng thay vì số lượng và có kế hoạch "cắt lỗ".</p>
+                    </div>
+                    <!-- Thẻ rủi ro: Vận hành -->
+                    <div class="bg-[#2f4b7c] p-6 rounded-xl text-center">
+                        <div class="text-5xl mb-3">⚙️</div>
+                        <h4 class="text-xl font-bold mb-2">Vận hành</h4>
+                        <p class="text-sm text-gray-300">Nguy cơ lừa đảo khi giao dịch. Luôn sử dụng dịch vụ ký quỹ (escrow) cho các giao dịch có giá trị để đảm bảo an toàn.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Phần Footer của Infographic -->
+        <footer class="text-center py-10 mt-12 border-t border-gray-700">
+            <p class="text-lg">Thời điểm vàng để đầu tư tên miền tại Việt Nam đang đến.</p>
+            <p class="text-gray-400">Hãy là một nhà đầu tư thông thái, đón đầu xu hướng và gặt hái thành công.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Định nghĩa bảng màu sắc sống động và màu sắc chính/phụ cho biểu đồ và các phần tử
+        const vibrantPalette = ['#665191', '#a05195', '#d45087', '#f95d6a', '#ff7c43', '#ffa600'];
+        const primaryColor = '#ffa600'; // Màu vàng cam chính
+        const secondaryColor = '#f95d6a'; // Màu đỏ cam phụ
+        const backgroundColor = '#2f4b7c'; // Màu nền cho các phần tử phụ trong biểu đồ
+        const textColor = '#FFFFFF'; // Màu chữ chung cho biểu đồ
+
+        /**
+         * Hàm này dùng để ngắt dòng nhãn dài trong biểu đồ để đảm bảo hiển thị đẹp.
+         * @param {string} label - Nhãn cần xử lý.
+         * @param {number} maxLength - Độ dài tối đa của một dòng trước khi ngắt.
+         * @returns {string|string[]} - Nhãn đã được ngắt dòng hoặc nhãn gốc.
+         */
+        function wrapLabel(label, maxLength = 16) {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                // Nếu thêm từ hiện tại vào dòng vượt quá maxLength, đẩy dòng hiện tại vào mảng và bắt đầu dòng mới
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    // Ngược lại, thêm từ vào dòng hiện tại
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            // Đẩy dòng cuối cùng vào mảng nếu có
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        }
+
+        /**
+         * Callback cho tooltip title trong Chart.js để hiển thị đầy đủ nhãn đã được ngắt dòng.
+         * @param {object[]} tooltipItems - Mảng các đối tượng tooltip item.
+         * @returns {string} - Tiêu đề tooltip đã được định dạng.
+         */
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            // Nếu nhãn là mảng (do đã ngắt dòng), nối lại thành một chuỗi
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            }
+            return label;
+        };
+        
+        // Cấu hình tùy chọn mặc định cho tất cả các biểu đồ Chart.js
+        const defaultChartOptions = {
+            responsive: true, // Biểu đồ sẽ tự động điều chỉnh kích thước theo container
+            maintainAspectRatio: false, // Không duy trì tỷ lệ khung hình cố định
+            plugins: {
+                legend: {
+                    labels: {
+                        color: textColor, // Màu chữ cho các nhãn trong chú giải
+                        font: {
+                            family: "'Be Vietnam Pro', sans-serif", // Font cho nhãn chú giải
+                            size: 14
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback // Sử dụng callback để xử lý tiêu đề tooltip
+                    },
+                    bodyFont: {
+                        family: "'Be Vietnam Pro', sans-serif", // Font cho nội dung tooltip
+                    },
+                    titleFont: {
+                        family: "'Be Vietnam Pro', sans-serif", // Font cho tiêu đề tooltip
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: textColor, font: { family: "'Be Vietnam Pro', sans-serif" } }, // Màu và font cho các giá trị trên trục Y
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' } // Màu lưới trục Y
+                },
+                x: {
+                    ticks: { color: textColor, font: { family: "'Be Vietnam Pro', sans-serif" } }, // Màu và font cho các giá trị trên trục X
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' } // Màu lưới trục X
+                }
+            }
+        };
+
+        // Khởi tạo biểu đồ Doughnut cho "Tỷ lệ Doanh nghiệp Sở hữu tên miền .vn"
+        const penetrationCtx = document.getElementById('penetrationChart').getContext('2d');
+        new Chart(penetrationCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Doanh nghiệp đã có tên miền .vn', 'Doanh nghiệp chưa có tên miền .vn'],
+                datasets: [{
+                    label: 'Tỷ lệ',
+                    data: [25, 75], // Dữ liệu 25% đã có, 75% chưa có
+                    backgroundColor: [primaryColor, backgroundColor], // Màu sắc cho các phần của biểu đồ
+                    borderColor: '#003f5c', // Màu viền của các phần
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom', // Đặt chú giải ở phía dưới
+                        labels: {
+                            color: textColor,
+                            font: { size: 14, family: "'Be Vietnam Pro', sans-serif" }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback, // Sử dụng callback cho tiêu đề tooltip
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%'; // Hiển thị giá trị phần trăm trong tooltip
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Tỷ lệ Doanh nghiệp Sở hữu tên miền .vn', // Tiêu đề biểu đồ
+                        color: textColor,
+                        font: { size: 16, weight: 'bold', family: "'Be Vietnam Pro', sans-serif" }
+                    }
+                }
+            }
+        });
+
+        // Khởi tạo biểu đồ Bar ngang cho "Mức độ tiềm năng các ngành mũi nhọn"
+        const sectorsCtx = document.getElementById('sectorsChart').getContext('2d');
+        new Chart(sectorsCtx, {
+            type: 'bar',
+            data: {
+                // Nhãn được xử lý bằng wrapLabel để ngắt dòng nếu quá dài
+                labels: ['Công nghệ (AI, Fintech)', 'TMĐT & Logistics', 'Kinh tế Xanh & Bền vững'].map(l => wrapLabel(l)),
+                datasets: [{
+                    label: 'Mức độ tiềm năng (Thang điểm 10)',
+                    data: [9.5, 9, 8], // Dữ liệu mức độ tiềm năng
+                    backgroundColor: vibrantPalette, // Màu sắc cho các cột
+                    borderColor: vibrantPalette,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...defaultChartOptions, // Kế thừa các tùy chọn mặc định
+                indexAxis: 'y', // Đặt trục Y là trục chỉ mục (biểu đồ thanh ngang)
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: { display: false } // Ẩn chú giải cho biểu đồ này
+                },
+                scales: {
+                    x: { 
+                        beginAtZero: true, // Bắt đầu trục X từ 0
+                        max: 10, // Giá trị tối đa trên trục X
+                        ticks: { color: textColor, font: { family: "'Be Vietnam Pro', sans-serif" } },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    y: {
+                        ticks: { color: textColor, font: { family: "'Be Vietnam Pro', sans-serif" } },
+                        grid: { display: false } // Ẩn lưới trục Y
+                    }
+                }
+            }
+        });
+
+        // Khởi tạo biểu đồ Bar dọc cho "So sánh chi phí duy trì các đuôi tên miền mới"
+        const tldCostCtx = document.getElementById('tldCostChart').getContext('2d');
+        new Chart(tldCostCtx, {
+            type: 'bar',
+            data: {
+                labels: ['.vn', '.com.vn', '.ai.vn', '.io.vn', '.id.vn'], // Các đuôi tên miền
+                datasets: [{
+                    label: 'Chi phí duy trì trung bình/năm (nghìn VNĐ)',
+                    data: [460, 360, 360, 42, 74], // Dữ liệu chi phí
+                    backgroundColor: vibrantPalette, // Màu sắc cho các cột
+                }]
+            },
+            options: {
+                ...defaultChartOptions, // Kế thừa các tùy chọn mặc định
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: { display: false }, // Ẩn chú giải
+                    title: {
+                        display: true,
+                        text: 'So sánh chi phí duy trì các đuôi tên miền mới', // Tiêu đề biểu đồ
+                        color: textColor,
+                        font: { size: 16, weight: 'bold', family: "'Be Vietnam Pro', sans-serif" }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
